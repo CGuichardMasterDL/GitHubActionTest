@@ -1,5 +1,8 @@
 name: Build CrudJS
-on: [push]
+on:
+    push:
+        branches:
+            - master
 jobs:
     build:
         name: Build GitHub Actions
