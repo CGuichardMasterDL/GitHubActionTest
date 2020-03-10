@@ -12,3 +12,4 @@ jobs:
               with:
                   PACKAGE_MANAGER: npm
                   BUILD_COMMAND_TARGET: build:js
+                  CLEAN_TARGETS: .[!.]*, *.lock, *-lock.json 
