@@ -9,3 +9,7 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - uses: technote-space/release-github-actions@v4
+              with:
+                  BUILD_COMMAND_TARGET: npm run build:js
+                  PACKAGE_MANAGER: npm
+                  COMMIT_MESSAGE: Release build
