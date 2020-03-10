@@ -1,0 +1,11 @@
+name: Release CrudJS
+on:
+    push:
+        tags:
+            - 'v*'
+jobs:
+    release:
+        name: Release GitHub Actions
+        runs-on: ubuntu-latest
+        steps:
+            - uses: technote-space/release-github-actions@v4

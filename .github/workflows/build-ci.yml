@@ -2,7 +2,7 @@ name: Build CrudJS
 on: [push]
 jobs:
     build:
-        name: Building
+        name: Build GitHub Actions
         runs-on: ubuntu-latest
         strategy:
           matrix:
