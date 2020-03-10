@@ -1,0 +1,16 @@
+{
+  "name": "GitHubActionTest",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Clément GUICHARD <clement.guichard0@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "ejs": "^3.0.1",
+    "express": "^4.17.1"
+  },
+  "scripts": {
+    "build": "npm run build:js && npm run build:docs",
+    "build:js": "mkdir -p dist && cat src/*.js > dist/index.js",
+    "build:docs": "mkdir -p docs && echo 'Test' > docs/index.html"
+  }
+}
