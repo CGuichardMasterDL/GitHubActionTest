@@ -9,6 +9,8 @@
     "express": "^4.17.1"
   },
   "scripts": {
-      "build": "mkdir -p dist && cat src/*.js > dist/index.js"
+      "build": "npm run build:js && npm run build:docs",
+      "build:js": "mkdir -p dist && cat src/*.js > dist/index.js",
+      "build:docs": "mkdir -p docs && echo 'Test' > docs/index.html"
   }
 }
