@@ -8,10 +8,7 @@ jobs:
         name: Release Lastest Build
         runs-on: ubuntu-latest
         steps:
-            - uses: dawidd6/action-delete-branch@master
-              with:
-                github_token: ${{ secrets.GITHUB_TOKEN }}
-                branches: 'lastest'
+            - run: git branch -D lastest
             - uses: peterjgrainger/action-create-branch@v1.0.0
               env:
                 GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
