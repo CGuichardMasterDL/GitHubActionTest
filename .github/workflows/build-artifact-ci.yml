@@ -6,7 +6,7 @@ on:
             - issue-*
 jobs:
     build:
-        name: Build Dist Artefact Job
+        name: Build Dist Artifact Job
         runs-on: ubuntu-latest
         strategy:
           matrix:
