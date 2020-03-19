@@ -24,7 +24,7 @@ jobs:
                 BRANCH: lastest
                 FOLDER: .
     deploy:
-        name: Deploy lastest
+        name: Deploy docs
         runs-on: ubuntu-latest
         strategy:
           matrix:
