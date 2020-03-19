@@ -1,4 +1,4 @@
-name: Build CrudJS Lastest
+name: CrudJS Lastest Build
 on:
     push:
         branches:

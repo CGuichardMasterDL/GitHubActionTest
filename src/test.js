@@ -14,3 +14,4 @@ function test() {
 test();
 
 console.log("Ok");
+console.log("Ok 2");
