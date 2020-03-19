@@ -4,8 +4,19 @@ on:
         branches:
             - master
 jobs:
-    build:
-        name: Lastest Build
+    release_lastest:
+        name: Release Job
+        runs-on: ubuntu-latest
+        steps:
+            - uses: technote-space/release-github-actions@v4
+              with:
+                PACKAGE_MANAGER: npm
+                BUILD_COMMAND_TARGET: build:dist
+                CLEAN_TARGETS: node_modules, .github, *.lock, *-lock.json, *-error.log
+                BRANCH_NAME: lastest-build
+                COMMIT_MESSAGE: Lastest build
+    deploy:
+        name: Deploy docs
         runs-on: ubuntu-latest
         strategy:
           matrix:
@@ -17,14 +28,7 @@ jobs:
               with:
                 node-version: ${{ matrix.node-version }}
             - run: npm install
-            - run: npm run build --if-present
-            - name: Release to lastest-build branch
-              uses: technote-space/release-github-actions@v4
-              with:
-                  PACKAGE_MANAGER: npm
-                  CLEAN_TARGETS: node_modules, .github, *.lock, *-lock.json, *-error.log
-                  BRANCH_NAME: lastest-build
-                  COMMIT_MESSAGE: Lastest build
+            - run: npm run build:docs --if-present
             - name: Deploy to github pages
               uses: JamesIves/github-pages-deploy-action@releases/v3
               with:
