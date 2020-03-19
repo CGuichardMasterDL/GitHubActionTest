@@ -11,5 +11,5 @@ jobs:
             - uses: technote-space/release-github-actions@v4
               with:
                   PACKAGE_MANAGER: npm
-                  BUILD_COMMAND_TARGET: build:js
-                  CLEAN_TARGETS: .[!.]*, *.lock, *-lock.json 
+                  BUILD_COMMAND_TARGET: build:dist
+                  CLEAN_TARGETS: node_modules, .github, *.lock, *-lock.json, *-error.log
