@@ -1,4 +1,4 @@
-name: Build CrudJS
+name: Build CrudJS Dist
 on:
     push:
         branches:
