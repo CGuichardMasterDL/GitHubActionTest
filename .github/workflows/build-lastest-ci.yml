@@ -18,18 +18,13 @@ jobs:
                 node-version: ${{ matrix.node-version }}
             - run: npm install
             - run: npm run build --if-present
-            - name: Prepare lastest build
-              uses: dawidd6/action-delete-branch@master
+            - name: Release to lastest-build branch
+              uses: technote-space/release-github-actions@v4
               with:
-                github_token: ${{ secrets.GITHUB_TOKEN }}
-                branches: lastest-build
-            - name: Build to lastest-build branch
-              uses: peterjgrainger/action-create-branch@v1.0.0
-              env:
-                GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-              with:
-                branch: lastest-build
-            - run: npm run build:docs --if-present
+                  PACKAGE_MANAGER: npm
+                  CLEAN_TARGETS: node_modules, .github, *.lock, *-lock.json, *-error.log
+                  BRANCH_NAME: lastest-build
+                  COMMIT_MESSAGE: Lastest build
             - name: Deploy to github pages
               uses: JamesIves/github-pages-deploy-action@releases/v3
               with:
