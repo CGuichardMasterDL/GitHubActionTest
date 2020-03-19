@@ -3,7 +3,7 @@
  * Functions
  * ------------------------------------------------------------------------
  */
- 
+
 function test() {
     console.log("TEST");
     var p = document.createElement('p');
@@ -12,3 +12,5 @@ function test() {
 }
 
 test();
+
+console.log("Ok");
