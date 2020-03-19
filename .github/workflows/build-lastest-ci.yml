@@ -18,12 +18,17 @@ jobs:
                 node-version: ${{ matrix.node-version }}
             - run: npm install
             - run: npm run build --if-present
+            - name: Prepare lastest build
+              uses: dawidd6/action-delete-branch@master
+              with:
+                github_token: ${{ secrets.GITHUB_TOKEN }}
+                branches: lastest-build
             - name: Build to lastest-build branch
               uses: peterjgrainger/action-create-branch@v1.0.0
               env:
                 GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
               with:
-                branch: 'lastest-build'
+                branch: lastest-build
             - run: npm run build:docs --if-present
             - name: Deploy to github pages
               uses: JamesIves/github-pages-deploy-action@releases/v3
