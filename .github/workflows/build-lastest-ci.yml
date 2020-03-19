@@ -17,12 +17,13 @@ jobs:
               with:
                 node-version: ${{ matrix.node-version }}
             - run: npm install
-            - run: npm run build:dist --if-present
+            - run: npm run build --if-present
             - name: Build to lastest-build branch
-              uses: Embraser01/update-git-branch-action@v1.0.0
+              uses: peterjgrainger/action-create-branch@v1.0.0
+              env:
+                GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
               with:
-                branch: lastest-build
-                githubToken: ${{ secrets.PAT_TOKEN }} # Github Token
+                branch: 'lastest-build'
             - run: npm run build:docs --if-present
             - name: Deploy to github pages
               uses: JamesIves/github-pages-deploy-action@releases/v3
