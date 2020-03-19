@@ -1,4 +1,4 @@
-name: Release CrudJS
+name: CrudJS Release
 on:
     push:
         tags:

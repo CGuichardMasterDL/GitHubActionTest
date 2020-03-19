@@ -1,4 +1,4 @@
-name: Create CrudJS Issue Branch
+name: CrudJS Issue Branch
 on:
     issues:
         types: [assigned]
