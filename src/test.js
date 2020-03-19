@@ -13,4 +13,4 @@ function test() {
 
 test();
 
-console.log("Confirmation");
+console.log("Another confirmation");
