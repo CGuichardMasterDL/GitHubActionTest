@@ -1,0 +1,33 @@
+name: Build CrudJS Lastest
+on:
+    push:
+        branches:
+            - master
+jobs:
+    build:
+        name: Lastest Build
+        runs-on: ubuntu-latest
+        strategy:
+          matrix:
+            node-version: [12.x]
+        steps:
+            - uses: actions/checkout@v2
+            - name: Use Node.js
+              uses: actions/setup-node@v1
+              with:
+                node-version: ${{ matrix.node-version }}
+            - run: npm install
+            - run: npm run build:dist --if-present
+            - name: Build to lastest-build branch
+              uses: peterjgrainger/action-create-branch@v1.0.0
+              env:
+                GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+              with:
+                branch: 'lastest-build'
+            - run: npm run build:docs --if-present
+            - name: Deploy to github pages
+              uses: JamesIves/github-pages-deploy-action@releases/v3
+              with:
+                ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+                BRANCH: gh-pages
+                FOLDER: docs
