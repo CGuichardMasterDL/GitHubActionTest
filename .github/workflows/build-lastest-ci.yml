@@ -4,19 +4,8 @@ on:
         branches:
             - master
 jobs:
-    release_lastest:
-        name: Release Lastest Build
-        runs-on: ubuntu-latest
-        steps:
-            - run: git branch -D lastest
-            - uses: peterjgrainger/action-create-branch@v1.0.0
-              env:
-                GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-              with:
-                branch: 'lastest'
-
     deploy:
-        name: Deploy Docs
+        name: Deploy lastest
         runs-on: ubuntu-latest
         strategy:
           matrix:
@@ -28,7 +17,13 @@ jobs:
               with:
                 node-version: ${{ matrix.node-version }}
             - run: npm install
-            - run: npm run build:docs --if-present
+            - run: npm run build --if-present
+            - name: Deploy lastest build
+              uses: JamesIves/github-pages-deploy-action@releases/v3
+              with:
+                ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+                BRANCH: lastest
+                FOLDER: .
             - name: Deploy to github pages
               uses: JamesIves/github-pages-deploy-action@releases/v3
               with:
