@@ -19,11 +19,10 @@ jobs:
             - run: npm install
             - run: npm run build:dist --if-present
             - name: Build to lastest-build branch
-              uses: peterjgrainger/action-create-branch@v1.0.0
-              env:
-                GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+              uses: Embraser01/update-git-branch-action@v1.0.0
               with:
-                branch: 'lastest-build'
+                branch: lastest-build
+                githubToken: ${{ secrets.PAT_TOKEN }} # Github Token
             - run: npm run build:docs --if-present
             - name: Deploy to github pages
               uses: JamesIves/github-pages-deploy-action@releases/v3
