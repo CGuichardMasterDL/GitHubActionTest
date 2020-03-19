@@ -5,7 +5,7 @@ on:
             - master
 jobs:
     release_lastest:
-        name: Release Job
+        name: Release Lastest Build
         runs-on: ubuntu-latest
         steps:
             - uses: technote-space/release-github-actions@v4
@@ -13,7 +13,7 @@ jobs:
                 PACKAGE_MANAGER: npm
                 BUILD_COMMAND_TARGET: build:dist
                 CLEAN_TARGETS: node_modules, .github, *.lock, *-lock.json, *-error.log
-                BRANCH_NAME: lastest-build
+                BRANCH_NAME: 'lastest-build'
                 COMMIT_MESSAGE: Lastest build
     deploy:
         name: Deploy docs
