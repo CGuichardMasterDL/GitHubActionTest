@@ -15,3 +15,4 @@ test();
 
 console.log("Ok");
 console.log("Ok 2");
+console.log("Ok 3");
