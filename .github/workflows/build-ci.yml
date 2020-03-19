@@ -2,10 +2,10 @@ name: Build CrudJS
 on:
     push:
         branches:
-            - master
+            - dev
 jobs:
     build:
-        name: Build GitHub Actions
+        name: Build Dist Artefact
         runs-on: ubuntu-latest
         strategy:
           matrix:
@@ -17,16 +17,9 @@ jobs:
               with:
                 node-version: ${{ matrix.node-version }}
             - run: npm install
-            - run: npm run build --if-present
+            - run: npm run build:dist --if-present
             - name: Archive production artifacts
               uses: actions/upload-artifact@v1
               with:
                 name: dist
                 path: dist
-            - name: Deploy to github pages
-              uses: JamesIves/github-pages-deploy-action@releases/v3
-              with:
-                  ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-                  BASE_BRANCH: master
-                  BRANCH: gh-pages
-                  FOLDER: docs
