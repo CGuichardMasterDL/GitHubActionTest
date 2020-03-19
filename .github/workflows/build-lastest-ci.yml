@@ -8,13 +8,16 @@ jobs:
         name: Release Lastest Build
         runs-on: ubuntu-latest
         steps:
-            - uses: technote-space/release-github-actions@v4
+            - uses: dawidd6/action-delete-branch@master
               with:
-                PACKAGE_MANAGER: npm
-                BUILD_COMMAND_TARGET: build:dist
-                CLEAN_TARGETS: node_modules, .github, *.lock, *-lock.json, *-error.log
-                BRANCH_NAME: lastest
-                COMMIT_MESSAGE: Lastest build
+                github_token: ${{ secrets.GITHUB_TOKEN }}
+                branches: 'lastest'
+            - uses: peterjgrainger/action-create-branch@v1.0.0
+              env:
+                GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+              with:
+                branch: 'lastest'
+
     deploy:
         name: Deploy Docs
         runs-on: ubuntu-latest
