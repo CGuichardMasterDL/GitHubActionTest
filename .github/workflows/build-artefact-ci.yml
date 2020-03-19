@@ -3,9 +3,10 @@ on:
     push:
         branches:
             - dev
+            - issue-*
 jobs:
     build:
-        name: Build Dist Artefact
+        name: Build Dist Artefact Job
         runs-on: ubuntu-latest
         strategy:
           matrix:
