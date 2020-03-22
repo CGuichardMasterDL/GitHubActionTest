@@ -1,11 +1,11 @@
-name: CrudJS Lastest Build
+name: CrudJS Latest Build
 on:
     push:
         branches:
             - master
 jobs:
     release:
-        name: Deploy lastest
+        name: Deploy latest
         runs-on: ubuntu-latest
         strategy:
           matrix:
@@ -17,11 +17,11 @@ jobs:
                 node-version: ${{ matrix.node-version }}
             - run: npm install
             - run: npm run build:dist --if-present
-            - name: Deploy lastest dist build
+            - name: Deploy latest dist build
               uses: JamesIves/github-pages-deploy-action@releases/v3
               with:
                 ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-                BRANCH: lastest
+                BRANCH: latest
                 FOLDER: .
     deploy:
         name: Deploy docs
